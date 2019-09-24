@@ -1,0 +1,50 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+
+}
+
+body {
+  background: url('/assets/images/bg-1.jpeg');
+  background-size: cover;
+  
+}
+
+/* .main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+.contents-wrapper {
+  height: 800px;
+  width: 800px;
+}
+
+.contents-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.contents-item {
+  margin: 10px;
+  height: 10em;
+  width: 100%;
+  background: ivory;
+}
+@media (max-width: 575.98px) { 
+   
+  .contents-container {
+    width: 100%;
+  }
+} */
+
+/* @media (max-width: 767.98px) { ... }
+
+@media (max-width: 991.98px) { ... }
+
+@media (max-width: 1199.98px) { ... } */

@@ -1,0 +1,23 @@
+.acrylic-style::before {
+  position: absolute;
+  background: url('/assets/images/bg-1.jpeg');
+  background-size: cover;
+  content: "";
+  height: 100%;
+  width: 800px;
+
+  /* background: rgba(206, 5, 5, 0.2); */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  overflow: hidden;
+
+  
+}
+
+.acrylic-style {
+  background: rgba(104, 104, 104, 0.4);
+  overflow: hidden;
+  
+
+
+}
