@@ -1,10 +1,8 @@
 /* eslint-disable no-console */
 import { Svg } from './Svg';
 
-// ADD CLASSES TO CONSTRUCTOR
-
 class SvgParent extends Svg {
-  constructor(DOMElement, id, classes, type) {
+  constructor({ DOMElement, id = '', classes = [], type = [] }) {
     super(DOMElement, id, type, classes);
     this.children = [];
   }

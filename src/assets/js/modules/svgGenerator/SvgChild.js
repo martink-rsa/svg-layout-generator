@@ -1,10 +1,12 @@
-// ADD CLASSES TO CONSTRUCTOR
-
 class SvgChild {
-  constructor(parentClass, type) {
+  constructor(parentClass, type = [], classes = [], group = [], filters = []) {
     this.parent = elementGenerator.createElement('svg', parentClass);
     this.type = type;
-    this.children = [];
+    this.classes = classes;
+    // Svg inline group <g> tag
+    this.group = group;
+    // Svg filters to apply
+    this.filters = filters;
   }
 
   addChild(newChild) {

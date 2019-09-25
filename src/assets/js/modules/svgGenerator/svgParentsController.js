@@ -1,22 +1,11 @@
+import { SvgParents } from "./SvgParents";
+
 /* eslint-disable no-underscore-dangle */
 
 const svgParentsController = (() => {
   let _svgParents;
   const getSvgParents = () => _svgParents;
   const setSvgParents = (svgParents) => { _svgParents = svgParents; };
-
-  class SvgParents {
-    constructor() {
-      // Array containing all of the parents
-      this.parents = [];
-      // Groups of SVGs that can be controlled together
-      this.layout = [];
-      this.style1 = [];
-      this.style2 = [];
-      this.style3 = [];
-      this.style4 = [];
-    }
-  }
 
   const createParentsContainer = () => {
     const newSvgParentsContainer = new SvgParents();
