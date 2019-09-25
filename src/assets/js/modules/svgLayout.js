@@ -118,7 +118,7 @@ const svgLayout = (() => {
       console.log('- Child SVG element created using createElementNS');
     } else {
       newTag = document.createElement(tag);
-      console.log('- Normal Element Created');
+      console.log('-- Normal Element Created');
     }
 
     // Add a class if supplied

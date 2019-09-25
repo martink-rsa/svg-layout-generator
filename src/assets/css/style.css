@@ -39,23 +39,27 @@ body {
   stroke-width: 10px;
 }
 
-.svg-test {
+
+/* Basic styles */
+
+.line-style-1 {
+  stroke: rgb(0, 0, 0);
+  stroke-width: 10px;
+}
+
+
+
+
+.test-line {
+  stroke: blue;
+  stroke-width: 15px;
   
+}
+
+.svg-test {
   z-index: 999;
   stroke-width: 10px;
   height: 100%;
   width: 100%;
   background: rgba(150, 140, 140, 0.589)
-}
-
-.svg-box-test {
-  stroke: #fff;
-  fill: #fff;
-  stroke-width: 10px;
-}
-
-.basic-rect {
-  fill: red;
-  stroke: red;
-  stroke-width: 5px;
 }

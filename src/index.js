@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 /*
   Information holder – an object designed to know certain information and provide that information to other objects.
   Structurer – an object that maintains relationships between objects and information about those relationships.
@@ -7,11 +9,19 @@
   Interfacer – an object that transforms information or requests between distinct parts of a system.
 */
 
+'use strict'
 
+/* Stylesheets */
 import './assets/css/normalize.css';
 import './assets/css/style.css';
 import './assets/css/acrylic.css';
-import { svgLayout } from './assets/js/modules/svgLayout';
-import { svgTemplate } from './assets/js/modules/svgTemplate';
 
-svgLayout.createNewSVGLayout(800, 800, 'rgba(255,0,255,1');
+/* Modules */
+import { svgGenerator } from './assets/js/modules/svgGenerator/svgGenerator';
+import { domController } from './assets/js/modules/domController/domController';
+
+svgGenerator.createSVG();
+
+// OLD MODULE AND FUNCTION
+// import { svgLayout } from './assets/js/modules/svgLayout';
+// svgLayout.createNewSVGLayout(800, 800, 'rgba(255,0,255,1');
