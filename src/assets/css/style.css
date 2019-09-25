@@ -11,40 +11,51 @@ body {
   
 }
 
-/* .main-wrapper {
+.main-wrapper {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   height: 100%;
   width: 100%;
 }
 
-.contents-wrapper {
+.content-wrapper {
   height: 800px;
   width: 800px;
 }
 
-.contents-container {
+.content-container {
   display: flex;
   height: 100%;
   width: 100%;
 }
 
-.contents-item {
-  margin: 10px;
-  height: 10em;
+.svg-base-container {
+  height: 100%;
   width: 100%;
-  background: ivory;
+  background: rgba(60, 5, 122, 0.356);
+  stroke: #fff;
+  fill: #fff;
+  stroke-width: 10px;
 }
-@media (max-width: 575.98px) { 
-   
-  .contents-container {
-    width: 100%;
-  }
-} */
 
-/* @media (max-width: 767.98px) { ... }
+.svg-test {
+  
+  z-index: 999;
+  stroke-width: 10px;
+  height: 100%;
+  width: 100%;
+  background: rgba(150, 140, 140, 0.589)
+}
 
-@media (max-width: 991.98px) { ... }
+.svg-box-test {
+  stroke: #fff;
+  fill: #fff;
+  stroke-width: 10px;
+}
 
-@media (max-width: 1199.98px) { ... } */
+.basic-rect {
+  fill: red;
+  stroke: red;
+  stroke-width: 5px;
+}
