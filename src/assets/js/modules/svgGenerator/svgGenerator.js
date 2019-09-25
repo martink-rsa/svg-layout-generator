@@ -22,9 +22,9 @@ import { SvgChild } from './SvgChild';
 // CLASSES WILL BE TRANSFERED AND DEALT WITH AS AN ARRAY
 
 const svgGenerator = (() => {
-  const createSvgParent = (id, parentClasses, type) => {
+  const createSvgParent = (id, classes, type) => {
     const newSvgDOMElement = elementGenerator.createElement('svg');
-    const newSvgParent = new SvgParent(newSvgDOMElement, id, type, parentClasses);
+    const newSvgParent = new SvgParent(newSvgDOMElement, id, type, classes);
     newSvgParent.printSvgParent();
     console.log('New Parent Created');
     console.log(newSvgParent);
