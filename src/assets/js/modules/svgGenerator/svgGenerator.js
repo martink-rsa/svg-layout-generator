@@ -39,6 +39,7 @@ import { domController } from '../domController/domController';
 import { svgParentsController } from './svgParentsController';
 import { SvgParent } from './SvgParent';
 import { SvgChild } from './SvgChild';
+import { Collection } from '../Collection/Collection';
 
 const svgGenerator = (() => {
   const createSvgParent = (id, classes, type) => {
@@ -54,12 +55,19 @@ const svgGenerator = (() => {
     return new SvgChild({ DOMElement: shape.DOMElement, DOMAttributes: shape.DOMAttributes });
   };
 
-  const appendChildToSvgParent = (svgParent, shape) => {
-    svgParent.children.push(shape);
-    console.log(shape);
-    svgParent.DOMElement.appendChild(shape.DOMElement);
+  const appendChildToSvgParent = (svgParent, svgChild) => {
+    svgParent.children.push(svgChild);
+    console.log(svgChild);
+    svgParent.DOMElement.appendChild(svgChild.DOMElement);
   };
 
+  // Set id
+  // Set classes
+  // Set collections
+
+  const setClasses = (obj, newClass) => {
+    obj.DOMElement.classList.add(newClass);
+  };
 
   const createShape = (tag, attributes) => {
     console.log('========== createShape():   (returns svgChild)');
@@ -67,71 +75,53 @@ const svgGenerator = (() => {
     // Assign the correct shapes to be created
     if (tag === 'line') {
       shape = svgCreateShape.createLine(attributes);
+    } else if (tag === 'rect') {
+      shape = svgCreateShape.createRect(attributes);
     }
-    
     const svgChild = createSvgChild(shape);
-    svgChild.DOMAttributes['test'] = '!';
     console.table([shape.DOMAttributes, svgChild.DOMAttributes]);
-    console.log({ svgChild });
-
-
-
-
     return svgChild;
   };
 
-  const createSVG = () => {
+  const createStyle1 = () => {
+    console.log('___COLLECTION TESTS___');
+
+    const collection = new Collection({ collectionAllowDuplicates: false });
+    collection.add('test');
+    collection.add('test1');
+    collection.add('test2');
+    collection.add('test3');
+    collection.add('test2');
+    collection.remove('test1');
+
+    console.log(collection.getCollection());
+    
     const mainDisplay = domController.getMainDisplay();
-
-    // Step 1:
+    // Step 1: Create Parents Controller
     svgParentsController.createParentsContainer();
-    // Step 2:
+    // //-- Repeat here
+    // Step 2: Create SVG Parent
     const svgParent0 = createSvgParent('layout');
-    // Step 3:
-    const line0 = createShape('line', { x1: 111, y1: 111, x2: 777, y2: 777 });
-    console.log('------------------------------LINE0');
-    console.log(line0);
-  
-/*     appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 100, y1: 100, x2: 700, y2: 100 }));
-    appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 700, y1: 100, x2: 700, y2: 700 }));
-    appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 100, y1: 700, x2: 700, y2: 700 }));
-    appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 100, y1: 100, x2: 100, y2: 700 })); */
-    // Step 4:
+    // Step 3: Create shape
+    const rect0 = createShape('rect', { height: 200, width: 200 });
+    // Step 4: Assign shape to Parent
+    appendChildToSvgParent(svgParent0, rect0);
+    // Step 5: Set Classes
+    setClasses(svgParent0, 'svg-test');
+    setClasses(rect0, 'rect-test');
+    // Step 6: Add Parent to Parents Controller
     svgParentsController.addParentToContainer(svgParent0);
-    // Step 5:
-    mainDisplay.appendChild(svgParent0.DOMElement);
+    // Step 7: Display Parent to Screen
+    svgParentsController.appendAllToDisplay(mainDisplay);
+    // mainDisplay.appendChild(svgParent0.DOMElement);
+  };
 
-    // -------
+  const createSVG = () => {
+    createStyle1();
 
-    const svgParent1 = createSvgParent('layout');
-    // Step 3:
-/*     appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 200, y1: 200, x2: 600, y2: 200 }));
-    appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 600, y1: 200, x2: 600, y2: 600 }));
-    appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 200, y1: 600, x2: 600, y2: 600 }));
-    appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 200, y1: 200, x2: 200, y2: 600 })); */
-    // Step 4:
-    svgParentsController.addParentToContainer(svgParent1);
-    // Step 5:
-    mainDisplay.appendChild(svgParent1.DOMElement);
-
-    svgParentsController.addClassToAllOfType('layout', 'test-line');
   };
   return {
     createSVG,
   };
 })();
 export { svgGenerator };
-
-/* OLD COMMENTS: */
-
-// #Create object with the SVG Main container being the focus?
-// #Add children to an array?
-
-// # Parent SVG is created
-// # Parent SVG is appended to Parent SVG Container
-// # Line is drawn and appended to Parent SVG
-// # Parent SVG is created
-// # Parent SVG is appended to Parent SVG Container
-// # Circle is draw
-// # Parent SVG container adds class to all SVG Parents of X group
-

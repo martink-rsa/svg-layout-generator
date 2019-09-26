@@ -25,7 +25,7 @@ const svgParentsController = (() => {
 
     // --- Adding Parent to specific group
     if (type) {
-      // Check if the 'type' given exists',
+      // Check if the 'type' given exists,
       //    create it if not.
       const hasTypeProperty = Object.prototype.hasOwnProperty.call(svgParentsContainer, type);
       if (hasTypeProperty) {
@@ -40,6 +40,16 @@ const svgParentsController = (() => {
     console.log(getSvgParents());
   };
 
+  const appendAllToDisplay = (display) => {
+    const svgParents = getSvgParents();
+    for (let i = 0; i < svgParents.parents.length; i += 1) {
+      display.appendChild(svgParents.parents[i].DOMElement);
+    }
+  };
+
+  // 1 of 2 Functions used to test concept of collections
+  // Outdated and can be deleted, but the code is still
+  // very useful.
   const changeAllStrokesOfType = (type) => {
     const svgParentsContainer = getSvgParents();
     const hasTypeProperty = Object.prototype.hasOwnProperty.call(svgParentsContainer, type);
@@ -56,6 +66,9 @@ const svgParentsController = (() => {
     }
   };
 
+  // 2 of 2 Functions used to test concept of collections
+  // Outdated and can be deleted, but the code is still
+  // very useful
   const addClassToAllOfType = (type, newClass) => {
     const svgParentsContainer = getSvgParents();
     const hasTypeProperty = Object.prototype.hasOwnProperty.call(svgParentsContainer, type);
@@ -77,6 +90,7 @@ const svgParentsController = (() => {
     addParentToContainer,
     changeAllStrokesOfType,
     addClassToAllOfType,
+    appendAllToDisplay,
   };
 })();
 export { svgParentsController };

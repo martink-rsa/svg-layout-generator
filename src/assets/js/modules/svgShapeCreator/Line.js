@@ -1,7 +1,6 @@
 /* eslint-disable class-methods-use-this */
-import { elementGenerator } from '../elementGenerator/elementGenerator';
-
 /* eslint-disable no-underscore-dangle */
+import { elementGenerator } from '../elementGenerator/elementGenerator';
 
 class Line {
   constructor({ x1, y1, x2, y2, pathLength = undefined }) {

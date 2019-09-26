@@ -63,3 +63,8 @@ body {
   width: 100%;
   background: rgba(150, 140, 140, 0.589)
 }
+
+.rect-test {
+  stroke: black;
+  fill: blueviolet;
+}
