@@ -10,7 +10,7 @@ const svgCreateShape = (() => {
     // Set collections
     console.log('------- svgCreateShape ---');
     if (x1 !== undefined && y1 !== undefined && x2 !== undefined && y2 !== undefined) {
-      console.log('CORRECT PARAMETERS PASSED: CREATING NEW SHAPE');
+      console.log('-- SHAPE CREATION: Correct parameters passed - Creating new shape');
       const newLine = new Line({ x1, y1, x2, y2, pathLength });
       if (id) {
         newLine.id = id;
@@ -18,7 +18,7 @@ const svgCreateShape = (() => {
       return newLine;
     }
     // Have not dealt with error handling.
-    console.log('ERROR: INCORRECT VALUES PASSED');
+    console.log('-- ERROR: INCORRECT VALUES PASSED (svgCreateShape)');
   };
 
   return {
