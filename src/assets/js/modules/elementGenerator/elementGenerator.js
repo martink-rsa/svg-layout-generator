@@ -16,7 +16,8 @@ const elementGenerator = (() => {
     const regexStringsIntegers = /[A-Za-z0-9]+/g;
     const newTag = tag.toLowerCase().match(regexStringsIntegers).join();
     // SVG child elements that would go into a <svg>...</svg> container
-    const svgChildElements = ['def', 'g', 'filter', 'line', 'circle', 'rect', 'polyline', 'path'];
+    // const svgChildElements = ['def', 'g', 'filter', 'line', 'circle', 'rect', 'polyline', 'path', 'polygon', 'ellipse'];
+    const svgChildElements = ['def', 'g', 'filter', 'circle', 'rect', 'polyline', 'path', 'polygon', 'ellipse'];
     let generatedElement;
 
     // SVGs require a different declaration

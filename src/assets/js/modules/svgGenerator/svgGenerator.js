@@ -43,7 +43,8 @@ const svgGenerator = (() => {
 
   const appendChildToSvgParent = (svgParent, shape) => {
     svgParent.children.push(shape);
-    svgParent.DOMElement.appendChild(shape);
+    console.log(shape);
+    svgParent.DOMElement.appendChild(shape.DOMElement);
   };
 
   // Steps:
@@ -62,10 +63,14 @@ const svgGenerator = (() => {
     // Step 2:
     const svgParent0 = createSvgParent('layout', 'svg-test');
     // Step 3:
-    appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 100, y1: 100, x2: 700, y2: 100 } ));
-    appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 700, y1: 100, x2: 700, y2: 700 } ));
-    appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 100, y1: 700, x2: 700, y2: 700 } ));
-    appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 100, y1: 100, x2: 100, y2: 700 } ));
+  /*   const line0 = svgCreateShape.createLine({ x1: 100, y1: 100, x2: 700, y2: 100 })
+    const line1 = svgCreateShape.createLine({ x1: 700, y1: 100, x2: 700, y2: 700 })
+    const line2 = svgCreateShape.createLine({ x1: 100, y1: 700, x2: 700, y2: 700 })
+    const line3 = svgCreateShape.createLine({ x1: 100, y1: 100, x2: 100, y2: 700 }) */
+    appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 100, y1: 100, x2: 700, y2: 100 }));
+    appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 700, y1: 100, x2: 700, y2: 700 }));
+    appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 100, y1: 700, x2: 700, y2: 700 }));
+    appendChildToSvgParent(svgParent0, svgCreateShape.createLine({ x1: 100, y1: 100, x2: 100, y2: 700 }));
     // Step 4:
     svgParentsController.addParentToContainer(svgParent0);
     // Step 5:
@@ -75,10 +80,10 @@ const svgGenerator = (() => {
 
     const svgParent1 = createSvgParent('layout', 'svg-test');
     // Step 3:
-    appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 200, y1: 200, x2: 600, y2: 200 } ));
-    appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 600, y1: 200, x2: 600, y2: 600 } ));
-    appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 200, y1: 600, x2: 600, y2: 600 } ));
-    appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 200, y1: 200, x2: 200, y2: 600 } ));
+    appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 200, y1: 200, x2: 600, y2: 200 }));
+    appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 600, y1: 200, x2: 600, y2: 600 }));
+    appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 200, y1: 600, x2: 600, y2: 600 }));
+    appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 200, y1: 200, x2: 200, y2: 600 }));
     // Step 4:
     svgParentsController.addParentToContainer(svgParent1);
     // Step 5:
