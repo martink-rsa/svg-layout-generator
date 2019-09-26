@@ -41,6 +41,8 @@ const svgGenerator = (() => {
     return newSvgParent;
   };
 
+  //const createSvgChild = ()
+
   const appendChildToSvgParent = (svgParent, shape) => {
     svgParent.children.push(shape);
     console.log(shape);
@@ -61,7 +63,7 @@ const svgGenerator = (() => {
     // Step 1:
     svgParentsController.createParentsContainer();
     // Step 2:
-    const svgParent0 = createSvgParent('layout', 'svg-test');
+    const svgParent0 = createSvgParent('layout');
     // Step 3:
   /*   const line0 = svgCreateShape.createLine({ x1: 100, y1: 100, x2: 700, y2: 100 })
     const line1 = svgCreateShape.createLine({ x1: 700, y1: 100, x2: 700, y2: 700 })
@@ -78,7 +80,7 @@ const svgGenerator = (() => {
 
     // -------
 
-    const svgParent1 = createSvgParent('layout', 'svg-test');
+    const svgParent1 = createSvgParent('layout');
     // Step 3:
     appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 200, y1: 200, x2: 600, y2: 200 }));
     appendChildToSvgParent(svgParent1, svgCreateShape.createLine({ x1: 600, y1: 200, x2: 600, y2: 600 }));

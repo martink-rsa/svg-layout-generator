@@ -2,8 +2,8 @@
 import { Svg } from './Svg';
 
 class SvgParent extends Svg {
-  constructor({ DOMElement, id = '', classes = [], type = [] }) {
-    super(DOMElement, id, type, classes);
+  constructor({ DOMElement, id = '', classes = [], filters = [], collections = [] }) {
+    super(DOMElement, id, classes, filters, collections);
     this.children = [];
   }
 

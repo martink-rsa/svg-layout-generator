@@ -1,16 +1,12 @@
-class SvgChild {
-  constructor(parentClass, type = [], classes = [], group = [], filters = []) {
-    this.parent = elementGenerator.createElement('svg', parentClass);
-    this.type = type;
-    this.classes = classes;
-    // Svg inline group <g> tag
-    this.group = group;
-    // Svg filters to apply
-    this.filters = filters;
-  }
+import { elementGenerator } from "../elementGenerator/elementGenerator";
+import { Svg } from "./Svg";
 
-  addChild(newChild) {
-    this.children.push(newChild);
+class SvgChild extends Svg {
+  constructor({ DOMElement, id = '', classes = [], filters = [], collections = [], group = '' }) {
+    super(DOMElement, id, classes, filters, collections);
+    this.group = group;
+    this.DOMAttributes = {
+    };
   }
 }
 

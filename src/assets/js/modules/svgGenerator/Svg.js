@@ -1,9 +1,10 @@
 class Svg {
-  constructor(DOMElement, id = '', type = '', parentClasses = []) {
+  constructor(DOMElement, id = '', classes = [], filters = [], collections = []) {
     this.DOMElement = DOMElement;
     this.id = id;
-    this.type = type;
-    this.classes = parentClasses;
+    this.classes = classes;
+    this.filters = filters;
+    this.collections = collections;
   }
 }
 
