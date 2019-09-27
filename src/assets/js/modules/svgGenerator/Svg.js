@@ -1,21 +1,25 @@
+/* eslint-disable class-methods-use-this */
 class Svg {
-  constructor(DOMElement, id = undefined, classes = [], filters = [], collections = []) {
+  constructor({ DOMElement, DOMAttributes, id = undefined, classes = [], filters = [], collections = [] }) {
     this.DOMElement = DOMElement;
+    this.DOMAttributes = DOMAttributes;
     this.id = id;
     this.classes = classes;
     this.filters = filters;
     this.collections = collections;
-
+    console.log({id});
+    console.log('-----++ADDID ABOUT TO BE CALLED: ' + id);
     this.addId(id);
     this.initClasses(classes);
   }
 
-  addId(id) {
-    if (id !== undefined && id !== '') {
-      this.id = id;
-      this.DOMElement.id = id;
+  addId(newId) {
+    console.log('Checking to add ID: ' + newId);
+    if (newId !== undefined && newId !== '') {
+      console.log('ID Added: ' + newId);
+      this.id = newId;
+      this.DOMElement.id = newId;
     }
-    console.log(this.DOMElement);
   }
 
   removeId() {
@@ -27,21 +31,18 @@ class Svg {
   initClasses(classes) {
     if (classes && classes.length > 0) {
       for (let i = 0; i < classes.length; i += 1) {
-        console.log(this.classes);
         this.DOMElement.classList.add(classes[i]);
       }
     }
   }
 
   addClasses(classes) {
-    console.log('ADDING CLASSES AFTER INIT');
     if (classes && classes.length > 0) {
       for (let i = 0; i < classes.length; i += 1) {
         this.classes.push(classes[i]);
         this.DOMElement.classList.add(classes[i]);
       }
     }
-    console.log(this.DOMElement);
   }
 
   removeFromArray(classes, item) {
@@ -78,4 +79,4 @@ class Svg {
   }
 }
 
-export { Svg };
+export default Svg;

@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
-import { elementGenerator } from '../elementGenerator/elementGenerator';
+import elementGenerator from '../elementGenerator/elementGenerator';
 
 class Rect {
   constructor({ x = undefined, y = undefined, height = undefined, width = undefined, rx = undefined, ry = undefined, pathLength = undefined }) {
@@ -29,4 +29,4 @@ class Rect {
   }
 }
 
-export { Rect };
+export default Rect;

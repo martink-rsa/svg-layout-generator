@@ -9,4 +9,4 @@ class SvgParents {
   }
 }
 
-export { SvgParents };
+export default SvgParents;

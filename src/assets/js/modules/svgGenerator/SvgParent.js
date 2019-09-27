@@ -1,17 +1,15 @@
 /* eslint-disable no-console */
-import { Svg } from './Svg';
+import Svg from './Svg';
 
 class SvgParent extends Svg {
-  constructor({ DOMElement, id = '', classes = [], filters = [], collections = [] }) {
-    super(DOMElement, id, classes, filters, collections);
+  constructor({ DOMElement, DOMAttributes, id = '', classes = [], filters = [], collections = [] }) {
+    super(DOMElement, DOMAttributes, id, classes, filters, collections);
     this.children = [];
   }
 
   addChild(newChild) {
     this.children.push(newChild);
   }
-
-
 
   printSvgParent() {
     console.log('-_-_-_-_-_-_-_-_-_-_-_-_ Svg Parent:');
@@ -25,4 +23,4 @@ class SvgParent extends Svg {
   }
 }
 
-export { SvgParent };
+export default SvgParent;

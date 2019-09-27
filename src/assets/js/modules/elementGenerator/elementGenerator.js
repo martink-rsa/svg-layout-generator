@@ -42,4 +42,4 @@ const elementGenerator = (() => {
   };
 })();
 
-export { elementGenerator };
+export default elementGenerator;

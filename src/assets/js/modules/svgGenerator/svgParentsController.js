@@ -1,4 +1,4 @@
-import { SvgParents } from "./SvgParents";
+import SvgParents from './SvgParents';
 /* eslint-disable no-underscore-dangle */
 
 const svgParentsController = (() => {
@@ -92,4 +92,4 @@ const svgParentsController = (() => {
     appendAllToDisplay,
   };
 })();
-export { svgParentsController };
+export default svgParentsController;

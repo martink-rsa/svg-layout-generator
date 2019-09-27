@@ -33,30 +33,19 @@
 // 5: Append to screen/display element
 
 
-import { elementGenerator } from '../elementGenerator/elementGenerator';
-import { svgCreateShape } from '../svgShapeCreator/svgCreateShape';
+import elementGenerator from '../elementGenerator/elementGenerator';
+import svgCreateShape from '../svgShapeCreator/svgCreateShape';
 import domController from '../domController/domController';
-import { svgParentsController } from './svgParentsController';
-import { SvgParent } from './SvgParent';
-import { SvgChild } from './SvgChild';
+import svgParentsController from './svgParentsController';
+import SvgParent from './SvgParent';
+import SvgChild from './SvgChild';
 import Collection from '../Collection/Collection';
 
 const svgGenerator = (() => {
-
   const createSvgParent = ({ id = undefined, classes = undefined, collections = undefined }) => {
     const newSvgDOMElement = elementGenerator.createElement('svg');
     const newSvgParent = new SvgParent({ DOMElement: newSvgDOMElement, id, classes, collections });
-    // newSvgParent.printSvgParent();
-    newSvgParent.addId('testID');
-    newSvgParent.addClasses(['tc1', 'tc2']);
-    newSvgParent.removeClasses(['a']);
-
     return newSvgParent;
-  };
-
-  const createSvgChild = (shape) => {
-    console.log('========== createSvgChild():');
-    return new SvgChild({ DOMElement: shape.DOMElement, DOMAttributes: shape.DOMAttributes });
   };
 
   const appendChildToSvgParent = (svgParent, svgChild) => {
@@ -74,20 +63,33 @@ const svgGenerator = (() => {
     } else if (tag === 'rect') {
       shape = svgCreateShape.createRect(attributes);
     }
-    const svgChild = createSvgChild(shape);
-    // console.table([shape.DOMAttributes, svgChild.DOMAttributes]);
-    return svgChild;
+    return shape;
+  };
+
+  const newCreateSvgChild = ({ tag = 'rect', DOMAttributes, parent = undefined, id = undefined, groups = [], classes = [], collections = [], filters = [] }) => {
+    const shape = createShape(tag, DOMAttributes);
+    console.log(shape);
+    console.log(shape.DOMAttributes);
+    const newSvgChild = new SvgChild({ DOMElement: shape.DOMElement, DOMAttributes: shape.DOMAttributes, parent, id, groups, classes, collections });
+    return newSvgChild;
   };
 
   const createStyle1 = () => {
+ 
+    
     const mainDisplay = domController.getMainDisplay();
     // Step 1: Create Parents Controller
     svgParentsController.createParentsContainer();
     // //-- Repeat here
     // Step 2: Create SVG Parent
     const svgParent0 = createSvgParent({ classes: ['a', 'b', 'c'], collections: ['layout'] });
-    // Step 3: Create shape
+
+    console.log('-=-=-=-=-=-=-=-=-=-=-=-=- NEW CREATESVGCHILD FUNCTION');
+    const child0 = newCreateSvgChild({ tag: 'rect', DOMAttributes: { height: 200, width: 200 }, id: 'myid', classes: ['c1', 'c2'] });
+    console.log(child0);
+/*     // Step 3: Create shape
     const rect0 = createShape('rect', { height: 200, width: 200 });
+    
     // Step 4: Assign shape to Parent
     appendChildToSvgParent(svgParent0, rect0);
     // Step 5: Set Classes
@@ -108,7 +110,7 @@ const svgGenerator = (() => {
     collection.add('test2');
     collection.remove('test1');
 
-    console.log(collection.getCollection());
+    console.log(collection.getCollection()); */
   };
 
   const createSVG = () => {

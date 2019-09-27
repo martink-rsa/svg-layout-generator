@@ -1,7 +1,7 @@
+/* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
-import { elementGenerator } from '../elementGenerator/elementGenerator';
-import { Line } from './Line';
-import { Rect } from './Rect';
+import Line from './Line';
+import Rect from './Rect';
 
 const svgCreateShape = (() => {
   const createLine = ({
@@ -15,6 +15,7 @@ const svgCreateShape = (() => {
     }
     // Have not dealt with error handling.
     console.log('-- ERROR: INCORRECT VALUES PASSED (svgCreateShape)');
+    return -1;
   };
 
   const createRect = ({
@@ -28,6 +29,7 @@ const svgCreateShape = (() => {
     }
     // Have not dealt with error handling.
     console.log('-- ERROR: INCORRECT VALUES PASSED (svgCreateShape)');
+    return -1;
   };
 
   return {
@@ -36,4 +38,4 @@ const svgCreateShape = (() => {
   };
 })();
 
-export { svgCreateShape };
+export default svgCreateShape;

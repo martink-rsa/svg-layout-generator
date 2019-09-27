@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
-import { elementGenerator } from '../elementGenerator/elementGenerator';
+import elementGenerator from '../elementGenerator/elementGenerator';
 
 class Line {
   constructor({ x1, y1, x2, y2, pathLength = undefined }) {
@@ -27,4 +27,4 @@ class Line {
   }
 }
 
-export { Line };
+export default Line;
