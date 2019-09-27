@@ -15,4 +15,4 @@ const domController = (() => {
     getMainDisplay,
   };
 })();
-export { domController };
+export default domController;

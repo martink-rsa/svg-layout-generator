@@ -11,15 +11,17 @@ class SvgParent extends Svg {
     this.children.push(newChild);
   }
 
+
+
   printSvgParent() {
     console.log('-_-_-_-_-_-_-_-_-_-_-_-_ Svg Parent:');
     console.log('DOMElement:');
     console.log(this.DOMElement);
-    console.log(`type: ${this.type}`);
+    console.log(`collections: ${this.collections}`);
     console.log(`classes: ${this.classes}`);
     console.log('children:');
     console.log(this.children);
-    console.log('-_-_-_-_-_-_-_-_-_-_-_-_Svg Parent ////END//// ');
+    console.log('-_-_-_-_-_-_-_-_-_-_-_-_ Svg Parent ////END//// ');
   }
 }
 

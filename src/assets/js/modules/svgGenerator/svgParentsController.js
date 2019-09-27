@@ -1,12 +1,11 @@
 import { SvgParents } from "./SvgParents";
-
 /* eslint-disable no-underscore-dangle */
 
 const svgParentsController = (() => {
   let _svgParents;
   const getSvgParents = () => _svgParents;
   const setSvgParents = (svgParents) => { _svgParents = svgParents; };
-
+   
   const createParentsContainer = () => {
     const newSvgParentsContainer = new SvgParents();
     setSvgParents(newSvgParentsContainer);
