@@ -1,23 +1,11 @@
+import SvgParents from './SvgParents';
 /* eslint-disable no-underscore-dangle */
 
 const svgParentsController = (() => {
   let _svgParents;
   const getSvgParents = () => _svgParents;
   const setSvgParents = (svgParents) => { _svgParents = svgParents; };
-
-  class SvgParents {
-    constructor() {
-      // Array containing all of the parents
-      this.parents = [];
-      // Groups of SVGs that can be controlled together
-      this.layout = [];
-      this.style1 = [];
-      this.style2 = [];
-      this.style3 = [];
-      this.style4 = [];
-    }
-  }
-
+   
   const createParentsContainer = () => {
     const newSvgParentsContainer = new SvgParents();
     setSvgParents(newSvgParentsContainer);
@@ -27,7 +15,8 @@ const svgParentsController = (() => {
   const addParentToContainer = (parent) => {
     // Get the main Parents container
     const svgParentsContainer = getSvgParents();
-
+    console.log('------ ADD TO PARENT');
+    console.log(parent);
     // Get the Type of current parent
     const { type } = parent;
 
@@ -36,7 +25,7 @@ const svgParentsController = (() => {
 
     // --- Adding Parent to specific group
     if (type) {
-      // Check if the 'type' given exists',
+      // Check if the 'type' given exists,
       //    create it if not.
       const hasTypeProperty = Object.prototype.hasOwnProperty.call(svgParentsContainer, type);
       if (hasTypeProperty) {
@@ -51,6 +40,69 @@ const svgParentsController = (() => {
     console.log(getSvgParents());
   };
 
+  const appendAllToDisplay = (display) => {
+    console.log('======================================================')
+    console.log('====================== APPEND ========================')
+    const svgParents = getSvgParents();
+    for (let i = 0; i < svgParents.parents.length; i += 1) {
+      console.log(svgParents.parents[i].DOMElement);
+      display.appendChild(svgParents.parents[i].DOMElement);
+    }
+  };
+
+  const addClassToCollectionDelay = (classes, collection, delay) => {
+    const svgParentsContainer = getSvgParents();
+    for (let i = 0; i < svgParentsContainer.parents.length; i += 1) {
+      const currentParent = svgParentsContainer.parents[i];
+      // Add class to the main parent if it has the collection.
+      if (currentParent.collections.includes(collection)) {
+        currentParent.DOMElement.classList.add(classes);
+        console.log('PARENT HAS COLLECTION');
+      } else {
+        console.log('PARENT DOES NOT HAVE COLLECTION');
+      }
+      // Add class to the parent's child if it has the collection:
+      for (let j = 0; j < currentParent.children.length; j += 1) {
+        const currentChild = currentParent.children[j];
+        if (currentChild.collections.includes(collection)) {
+          setTimeout(() => {
+            currentChild.DOMElement.classList.add(classes);
+          }, delay * j);
+        } else {
+          console.log('CHILD DOES NOT HAVE COLLECTION');
+        }
+      }
+    }
+  };
+
+  const removeClassFromCollectionDelay = (classes, collection, delay) => {
+    const svgParentsContainer = getSvgParents();
+    for (let i = 0; i < svgParentsContainer.parents.length; i += 1) {
+      const currentParent = svgParentsContainer.parents[i];
+      // Add class to the main parent if it has the collection.
+      if (currentParent.collections.includes(collection)) {
+        currentParent.DOMElement.classList.remove(classes);
+        console.log('PARENT HAS COLLECTION');
+      } else {
+        console.log('PARENT DOES NOT HAVE COLLECTION');
+      }
+      // Add class to the parent's child if it has the collection:
+      for (let j = 0; j < currentParent.children.length; j += 1) {
+        const currentChild = currentParent.children[j];
+        if (currentChild.collections.includes(collection)) {
+          setTimeout(() => {
+            currentChild.DOMElement.classList.remove(classes);
+          }, delay * j);
+        } else {
+          console.log('CHILD DOES NOT HAVE COLLECTION');
+        }
+      }
+    }
+  };
+
+  // 1 of 2 Functions used to test concept of collections
+  // Outdated and can be deleted, but the code is still
+  // very useful.
   const changeAllStrokesOfType = (type) => {
     const svgParentsContainer = getSvgParents();
     const hasTypeProperty = Object.prototype.hasOwnProperty.call(svgParentsContainer, type);
@@ -67,6 +119,9 @@ const svgParentsController = (() => {
     }
   };
 
+  // 2 of 2 Functions used to test concept of collections
+  // Outdated and can be deleted, but the code is still
+  // very useful
   const addClassToAllOfType = (type, newClass) => {
     const svgParentsContainer = getSvgParents();
     const hasTypeProperty = Object.prototype.hasOwnProperty.call(svgParentsContainer, type);
@@ -88,6 +143,9 @@ const svgParentsController = (() => {
     addParentToContainer,
     changeAllStrokesOfType,
     addClassToAllOfType,
+    appendAllToDisplay,
+    addClassToCollectionDelay,
+    removeClassFromCollectionDelay,
   };
 })();
-export { svgParentsController };
+export default svgParentsController;

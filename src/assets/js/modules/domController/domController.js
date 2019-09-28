@@ -7,7 +7,6 @@ const domController = (() => {
   const getMainDisplay = () => _mainDisplay;
 
   const init = () => {
-    console.log('domController init');
   };
 
   init();
@@ -16,4 +15,4 @@ const domController = (() => {
     getMainDisplay,
   };
 })();
-export { domController };
+export default domController;

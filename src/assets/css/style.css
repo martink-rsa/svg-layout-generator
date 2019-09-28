@@ -20,14 +20,15 @@ body {
 }
 
 .content-wrapper {
-  height: 800px;
-  width: 800px;
+  height: 100%;
+  width: 100%;
 }
 
 .content-container {
   display: flex;
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 
 .svg-base-container {
@@ -57,9 +58,62 @@ body {
 }
 
 .svg-test {
-  z-index: 999;
-  stroke-width: 10px;
+  stroke-width: 20px;
   height: 100%;
   width: 100%;
   background: rgba(150, 140, 140, 0.589)
 }
+
+.rect-test {
+  stroke: black;
+  fill: blueviolet;
+  transition: fill 1s ease-in-out;
+
+}
+
+.rect-test:hover {
+  stroke: black;
+  fill: rgb(43, 128, 226);
+}
+
+.rect-test2 {
+  stroke-width: 1;
+  left: 0;
+  transition: stroke 3s ease-in-out, fill 3s ease-in-out;
+
+}
+
+.rect-test2:hover {
+  fill: rgb(43, 128, 226);
+  transition: stroke 100ms ease-in-out, fill 100ms ease-in-out;
+
+}
+
+.rect-test-ani-1 {
+  fill: red;
+}
+
+.rect-test-ani-2 {
+  fill: orange;
+}
+
+.rect-test-ani-3 {
+  fill: yellow;
+}
+
+.rect-test-ani-4 {
+  fill: green;
+}
+
+.rect-test-ani-5 {
+  fill: blue;
+}
+
+.rect-test-ani-6 {
+  fill: indigo;
+}
+
+.rect-test-ani-7 {
+  fill: violet;
+}
+
