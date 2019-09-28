@@ -20,14 +20,15 @@ body {
 }
 
 .content-wrapper {
-  height: 800px;
-  width: 800px;
+  height: 300px;
+  width: 600px;
 }
 
 .content-container {
   display: flex;
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 
 .svg-base-container {
@@ -57,8 +58,7 @@ body {
 }
 
 .svg-test {
-  z-index: 999;
-  stroke-width: 10px;
+  stroke-width: 20px;
   height: 100%;
   width: 100%;
   background: rgba(150, 140, 140, 0.589)
@@ -67,4 +67,33 @@ body {
 .rect-test {
   stroke: black;
   fill: blueviolet;
+  transition: fill 1s ease-in-out;
+
+}
+
+.rect-test:hover {
+  stroke: black;
+  fill: rgb(43, 128, 226);
+}
+
+.rect-test2 {
+  stroke: white;
+  stroke-width: 1;
+  left: 0;
+  fill: blueviolet;
+  transition: stroke 3s ease-in-out, fill 3s ease-in-out;
+
+}
+
+.rect-test2:hover {
+  stroke: white;
+  fill: rgb(43, 128, 226);
+  transition: stroke 100ms ease-in-out, fill 100ms ease-in-out;
+
+}
+
+.rect-test-animation {
+  stroke: white;
+  fill: black;
+  left: -100px;
 }

@@ -7,16 +7,12 @@ class Svg {
     this.classes = classes;
     this.filters = filters;
     this.collections = collections;
-    console.log({id});
-    console.log('-----++ADDID ABOUT TO BE CALLED: ' + id);
     this.addId(id);
     this.initClasses(classes);
   }
 
   addId(newId) {
-    console.log('Checking to add ID: ' + newId);
     if (newId !== undefined && newId !== '') {
-      console.log('ID Added: ' + newId);
       this.id = newId;
       this.DOMElement.id = newId;
     }
@@ -29,8 +25,10 @@ class Svg {
   }
 
   initClasses(classes) {
+    console.log(classes);
     if (classes && classes.length > 0) {
       for (let i = 0; i < classes.length; i += 1) {
+        console.log('ADDING CLASS: ' + classes[i]);
         this.DOMElement.classList.add(classes[i]);
       }
     }

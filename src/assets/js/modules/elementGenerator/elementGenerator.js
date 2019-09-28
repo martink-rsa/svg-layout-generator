@@ -24,7 +24,6 @@ const elementGenerator = (() => {
       generatedElement = document.createElementNS('http://www.w3.org/2000/svg', newTag);
       generatedElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
       generatedElement.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
-      generatedElement.setAttribute('viewBox', '0 0 800 800');
       console.log(`- Parent SVG NS element created: ${newTag}`);
     } else if (svgChildElements.includes(newTag)) {
       generatedElement = document.createElementNS('http://www.w3.org/2000/svg', newTag);

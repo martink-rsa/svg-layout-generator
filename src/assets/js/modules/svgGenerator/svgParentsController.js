@@ -15,7 +15,8 @@ const svgParentsController = (() => {
   const addParentToContainer = (parent) => {
     // Get the main Parents container
     const svgParentsContainer = getSvgParents();
-
+    console.log('------ ADD TO PARENT');
+    console.log(parent);
     // Get the Type of current parent
     const { type } = parent;
 
@@ -40,9 +41,39 @@ const svgParentsController = (() => {
   };
 
   const appendAllToDisplay = (display) => {
+    console.log('======================================================')
+    console.log('====================== APPEND ========================')
     const svgParents = getSvgParents();
     for (let i = 0; i < svgParents.parents.length; i += 1) {
+      console.log(svgParents.parents[i].DOMElement);
       display.appendChild(svgParents.parents[i].DOMElement);
+    }
+  };
+
+  const addClassToCollection = (classes, collection) => {
+    const svgParentsContainer = getSvgParents();
+    console.log(svgParentsContainer.parents);
+    for (let i = 0; i < svgParentsContainer.parents.length; i += 1) {
+      const currentParent = svgParentsContainer.parents[i];
+      // Add class to the main parent if it has the collection.
+      console.log(currentParent);
+      if (currentParent.collections.includes(collection)) {
+        currentParent.DOMElement.classList.add(classes);
+        console.log('PARENT HAS COLLECTION');
+      } else {
+        console.log('PARENT DOES NOT HAVE COLLECTION');
+      }
+
+      for (let j = 0; j < currentParent.children.length; j += 1) {
+        const currentChild = currentParent.children[j];
+        console.log(currentChild);
+        if (currentChild.collections.includes(collection)) {
+          currentChild.DOMElement.classList.add(classes);
+        } else {
+          console.log('CHILD DOES NOT HAVE COLLECTION');
+        }
+      }
+      // Add class to the parent's child if it has the collection:
     }
   };
 
@@ -90,6 +121,7 @@ const svgParentsController = (() => {
     changeAllStrokesOfType,
     addClassToAllOfType,
     appendAllToDisplay,
+    addClassToCollection,
   };
 })();
 export default svgParentsController;

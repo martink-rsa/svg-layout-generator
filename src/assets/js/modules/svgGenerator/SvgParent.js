@@ -2,11 +2,20 @@
 import Svg from './Svg';
 
 class SvgParent extends Svg {
-  constructor({ DOMElement, DOMAttributes, id = '', classes = [], filters = [], collections = [] }) {
-    super(DOMElement, DOMAttributes, id, classes, filters, collections);
+  constructor({ DOMElement, DOMAttributes, id = '', classes = [], collections = [], filters = [] }) {
+    super(DOMElement, DOMAttributes, id, classes, collections, filters);
+    this.DOMElement = DOMElement;
+    this.DOMAttributes = DOMAttributes;
+    this.id = id;
+    this.classes = classes;
+    this.collections = collections;
+    this.filters = filters;
     this.children = [];
+    this.addId(id);
+    this.initClasses(classes);
   }
 
+  
   addChild(newChild) {
     this.children.push(newChild);
   }
