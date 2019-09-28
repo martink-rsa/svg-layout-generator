@@ -40,12 +40,20 @@ import svgParentsController from './svgParentsController';
 import SvgParent from './SvgParent';
 import SvgChild from './SvgChild';
 import Collection from '../Collection/Collection';
+import svgCreateFilter from './svgFilter';
 
 const svgGenerator = (() => {
   const createSvgParent = ({ id = undefined, classes = undefined, collections = undefined }) => {
     const newSvgDOMElement = elementGenerator.createElement('svg');
     const newSvgParent = new SvgParent({ DOMElement: newSvgDOMElement, id, classes, collections });
     return newSvgParent;
+  };
+
+  const createSvgFilter = () => {
+    // 1: Create Filter Tag
+    // 2: Create Filter Child
+    svgCreateFilter.createFilter('gaussian');
+
   };
 
   const appendChildToSvgParent = (svgParent, svgChild) => {
@@ -69,6 +77,73 @@ const svgGenerator = (() => {
     const newSvgChild = new SvgChild({ DOMElement: shape.DOMElement, DOMAttributes: shape.DOMAttributes, parent, id, groups, classes, collections, filters });
     return newSvgChild;
   }; 
+
+  const createStyle4 = () => {
+    const mainDisplay = domController.getMainDisplay();
+    // Step 1: Create Parents Controller
+    svgParentsController.createParentsContainer();
+    // //-- Repeat here
+    // Step 2: Create SVG Parent
+    const svgParent0 = createSvgParent({ classes: ['svg-test'], collections: ['layout'], id: 'main-svg' });
+    console.log('-------SVGPARENT-----');
+    console.log(svgParent0);
+
+    svgParentsController.addParentToContainer(svgParent0);
+    const rectAnimationClasses = ['rect-test-ani-1', 'rect-test-ani-2', 'rect-test-ani-3', 'rect-test-ani-4', 'rect-test-ani-5', 'rect-test-ani-6', 'rect-test-ani-7'];
+    let classesIndex = 0;
+    const width1 = 50;
+    const height1 = 50;
+ 
+    const divWidth = mainDisplay.clientWidth;
+    const divHeight = mainDisplay.clientHeight;
+
+    const boxesTotalX = divWidth / width1;
+    const boxesTotalY = divHeight / height1;
+    
+    let xPos;
+    let yPos;
+    for (let i = 0; i < boxesTotalX; i += 1) {
+      if (i === 0) {
+        xPos = 0;
+      } else {
+        xPos = width1 * i;
+      }
+      for (let j = 0; j < boxesTotalY; j += 1) {
+        if (j === 0) {
+          yPos = 0;
+        } else {
+          yPos = height1 * j;
+        }
+        const rect = createSvgChild({ tag: 'rect', parent: svgParent0, DOMAttributes: { x: xPos, y: yPos, height: height1, width: width1 }, classes: ['rect-test2'], collections: ['ani'] });
+        appendChildToSvgParent(svgParent0, rect);
+      }
+    }
+    
+    // Step 7: Display Parent to Screen
+    svgParentsController.appendAllToDisplay(mainDisplay);
+    setTimeout(() => {
+      svgParentsController.addClassToCollectionDelay(rectAnimationClasses[classesIndex], 'ani', 50);
+    }, 100);
+    setTimeout(() => {
+      svgParentsController.removeClassFromCollectionDelay(rectAnimationClasses[classesIndex], 'ani', 50);
+    }, 2500);
+    setInterval(() => {
+      const currentIndex = classesIndex;
+      setTimeout(() => {
+        svgParentsController.addClassToCollectionDelay(rectAnimationClasses[currentIndex], 'ani', 50);
+      }, 100);
+      setTimeout(() => {
+        svgParentsController.removeClassFromCollectionDelay(rectAnimationClasses[currentIndex], 'ani', 50);
+      }, 2500);
+      if (classesIndex === rectAnimationClasses.length - 1) {
+        classesIndex = 0;
+      } else {
+        classesIndex += 1;
+      }
+      console.log({ classesIndex });
+    }, 2500);
+    
+  };
 
   const createStyle3 = () => {
     const mainDisplay = domController.getMainDisplay();
@@ -109,29 +184,20 @@ const svgGenerator = (() => {
     // Step 7: Display Parent to Screen
     svgParentsController.appendAllToDisplay(mainDisplay);
     setTimeout(() => {
-      svgParentsController.addClassToCollection('rect-test-animation', 'ani');
-    }, 1000);
+      svgParentsController.addClassToCollectionDelay('rect-test-animation', 'ani', 50);
+    }, 100);
   };
 
   const createStyle2 = () => {
     const mainDisplay = domController.getMainDisplay();
-    // Step 1: Create Parents Controller
     svgParentsController.createParentsContainer();
-    // //-- Repeat here
-    // Step 2: Create SVG Parent
     const svgParent0 = createSvgParent({ classes: ['svg-test'], collections: ['layout'], id: 'main-svg' });
-    console.log('-------SVGPARENT-----');
-    console.log(svgParent0);
-
     svgParentsController.addParentToContainer(svgParent0);
 
-    const divWidth = mainDisplay.clientWidth;
-    const divHeight = mainDisplay.clientHeight;
     const boxesTotalX = 10;
     const boxesTotalY = 10;
     const width1 = 20;
     const height1 = 20;
-    console.log(divHeight);
     let xPos;
     for (let i = 0; i < boxesTotalX; i += 1) {
       for (let j = 0; j < boxesTotalY; j += 1) {
@@ -169,32 +235,18 @@ const svgGenerator = (() => {
     const rect4 = createSvgChild({ tag: 'rect', parent: svgParent0, DOMAttributes: { x: '33.33%', y: '50%', height: height1, width: width1 }, classes: ['rect-test'] });
     const rect5 = createSvgChild({ tag: 'rect', parent: svgParent0, DOMAttributes: { x: '66.66%', y: '50%', height: height1, width: width1 }, classes: ['rect-test'] });
 
-
-
     appendChildToSvgParent(svgParent0, rect0);
     appendChildToSvgParent(svgParent0, rect1);
     appendChildToSvgParent(svgParent0, rect2);
+
     appendChildToSvgParent(svgParent0, rect3);
     appendChildToSvgParent(svgParent0, rect4);
     appendChildToSvgParent(svgParent0, rect5);
     // Step 7: Display Parent to Screen
     svgParentsController.appendAllToDisplay(mainDisplay);
     
-/*     // Step 3: Create shape
-    const rect0 = createShape('rect', { height: 200, width: 200 });
-    
-    // Step 4: Assign shape to Parent
-    appendChildToSvgParent(svgParent0, rect0);
-    // Step 5: Set Classes
 
-    // Step 6: Add Parent to Parents Controller
-    svgParentsController.addParentToContainer(svgParent0);
-    // Step 7: Display Parent to Screen
-    svgParentsController.appendAllToDisplay(mainDisplay);
-    // mainDisplay.appendChild(svgParent0.DOMElement);
-
-    console.log('___COLLECTION TESTS___');
-
+/*     console.log('___COLLECTION TESTS___');
     const collection = new Collection({ collectionAllowDuplicates: false });
     collection.add('test');
     collection.add('test1');
@@ -202,12 +254,11 @@ const svgGenerator = (() => {
     collection.add('test3');
     collection.add('test2');
     collection.remove('test1');
-
     console.log(collection.getCollection()); */
   };
 
   const createSVG = () => {
-    createStyle3();
+    createStyle4();
 
   };
   return {

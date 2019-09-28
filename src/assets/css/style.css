@@ -20,8 +20,8 @@ body {
 }
 
 .content-wrapper {
-  height: 300px;
-  width: 600px;
+  height: 100%;
+  width: 100%;
 }
 
 .content-container {
@@ -77,23 +77,43 @@ body {
 }
 
 .rect-test2 {
-  stroke: white;
   stroke-width: 1;
   left: 0;
-  fill: blueviolet;
   transition: stroke 3s ease-in-out, fill 3s ease-in-out;
 
 }
 
 .rect-test2:hover {
-  stroke: white;
   fill: rgb(43, 128, 226);
   transition: stroke 100ms ease-in-out, fill 100ms ease-in-out;
 
 }
 
-.rect-test-animation {
-  stroke: white;
-  fill: black;
-  left: -100px;
+.rect-test-ani-1 {
+  fill: red;
 }
+
+.rect-test-ani-2 {
+  fill: orange;
+}
+
+.rect-test-ani-3 {
+  fill: yellow;
+}
+
+.rect-test-ani-4 {
+  fill: green;
+}
+
+.rect-test-ani-5 {
+  fill: blue;
+}
+
+.rect-test-ani-6 {
+  fill: indigo;
+}
+
+.rect-test-ani-7 {
+  fill: violet;
+}
+

@@ -50,30 +50,53 @@ const svgParentsController = (() => {
     }
   };
 
-  const addClassToCollection = (classes, collection) => {
+  const addClassToCollectionDelay = (classes, collection, delay) => {
     const svgParentsContainer = getSvgParents();
-    console.log(svgParentsContainer.parents);
     for (let i = 0; i < svgParentsContainer.parents.length; i += 1) {
       const currentParent = svgParentsContainer.parents[i];
       // Add class to the main parent if it has the collection.
-      console.log(currentParent);
       if (currentParent.collections.includes(collection)) {
         currentParent.DOMElement.classList.add(classes);
         console.log('PARENT HAS COLLECTION');
       } else {
         console.log('PARENT DOES NOT HAVE COLLECTION');
       }
-
+      // Add class to the parent's child if it has the collection:
       for (let j = 0; j < currentParent.children.length; j += 1) {
         const currentChild = currentParent.children[j];
-        console.log(currentChild);
         if (currentChild.collections.includes(collection)) {
-          currentChild.DOMElement.classList.add(classes);
+          setTimeout(() => {
+            currentChild.DOMElement.classList.add(classes);
+          }, delay * j);
         } else {
           console.log('CHILD DOES NOT HAVE COLLECTION');
         }
       }
+    }
+  };
+
+  const removeClassFromCollectionDelay = (classes, collection, delay) => {
+    const svgParentsContainer = getSvgParents();
+    for (let i = 0; i < svgParentsContainer.parents.length; i += 1) {
+      const currentParent = svgParentsContainer.parents[i];
+      // Add class to the main parent if it has the collection.
+      if (currentParent.collections.includes(collection)) {
+        currentParent.DOMElement.classList.remove(classes);
+        console.log('PARENT HAS COLLECTION');
+      } else {
+        console.log('PARENT DOES NOT HAVE COLLECTION');
+      }
       // Add class to the parent's child if it has the collection:
+      for (let j = 0; j < currentParent.children.length; j += 1) {
+        const currentChild = currentParent.children[j];
+        if (currentChild.collections.includes(collection)) {
+          setTimeout(() => {
+            currentChild.DOMElement.classList.remove(classes);
+          }, delay * j);
+        } else {
+          console.log('CHILD DOES NOT HAVE COLLECTION');
+        }
+      }
     }
   };
 
@@ -121,7 +144,8 @@ const svgParentsController = (() => {
     changeAllStrokesOfType,
     addClassToAllOfType,
     appendAllToDisplay,
-    addClassToCollection,
+    addClassToCollectionDelay,
+    removeClassFromCollectionDelay,
   };
 })();
 export default svgParentsController;
