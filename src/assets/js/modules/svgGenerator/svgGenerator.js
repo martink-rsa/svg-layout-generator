@@ -118,8 +118,7 @@ const svgGenerator = (() => {
         appendChildToSvgParent(svgParent0, rect);
       }
     }
-    
-    // Step 7: Display Parent to Screen
+
     svgParentsController.appendAllToDisplay(mainDisplay);
     setTimeout(() => {
       svgParentsController.addClassToCollectionDelay(rectAnimationClasses[classesIndex], 'ani', 50);
@@ -142,7 +141,7 @@ const svgGenerator = (() => {
       }
       console.log({ classesIndex });
     }, 2500);
-    
+
   };
 
   const createStyle3 = () => {
